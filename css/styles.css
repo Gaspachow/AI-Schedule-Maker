@@ -376,3 +376,25 @@ select:focus {outline:0;}
 select {
   font-size: large;
 }
+
+.day {
+  width: 15%;
+}
+
+.hour {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.minutes {
+  width: 100%;
+  text-align: center;
+  padding: 3px;
+}
+
+#weekCalendar {
+  display: flex;
+  border: 3px solid black;
+  border-radius: 5px;
+  width: 80%;
+}
