@@ -20,10 +20,10 @@ function makeHourInputs() {
 }
 
 function getSchedule() {
-    var workStartHour = document.getElementById("startwork-h").value;
-    var workStartMin = document.getElementById("startwork-m").value;
-    var workEndHour = document.getElementById("stopwork-h").value;
-    var workEndMin = document.getElementById("stopwork-m").value;
+    var workStartHour = Number(document.getElementById("startwork-h").value);
+    var workStartMin = Number(document.getElementById("startwork-m").value);
+    var workEndHour = Number(document.getElementById("stopwork-h").value);
+    var workEndMin = Number(document.getElementById("stopwork-m").value);
     var workArray = [document.getElementById("workDay0").checked,
                      document.getElementById("workDay1").checked,
                      document.getElementById("workDay2").checked,
