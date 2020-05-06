@@ -14,12 +14,23 @@ const taskEnum = Object.freeze(
 		CREATIVE_TIME: 10
 	});
 
+const day = Object.freeze(
+	{
+		MONDAY: 0,
+		TUESDAY: 1,
+		WEDNESDAY: 2,
+		THURSDAY: 3,
+		FRIDAY: 4,
+		SATURDAY: 5,
+		SUNDAY: 6
+	});
+
 function fillDay(schedule, task, day, startHour, startMin, lengthHour, lengthMinute)
 {
 	var shiftBegin = 0;
 	//handle edge cases where you don't start at X00
 	var a = 0
-	if (startMin > 0)
+	if (startMin > 0 && lengthHour > 0)
 	{
 		a = startMin;
 		while (a < 4)
@@ -31,6 +42,7 @@ function fillDay(schedule, task, day, startHour, startMin, lengthHour, lengthMin
 	}
 	if (lengthMinute > 0)
 	{
+		a = startMin;
 		while (a < 4 && lengthMinute > 0)
 		{
 			schedule[day][startHour + lengthHour][a++] = task;
@@ -73,9 +85,16 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 
 	//fill work hours
 	for (var l = 0 ; l < workArray.length; l++)
-	if (workArray[l])
-		schedule = fillDay(schedule, taskEnum.WORK, workStartHour, workStartMin, workEndHour - workStartHour, workEndMinute - workStartMin);
+	{
+		if (workArray[l])
+			schedule = fillDay(schedule, taskEnum.WORK, l, workStartHour, workStartMin, workEndHour - workStartHour, workEndMinute - workStartMin);
+		//check if morning break is possible
+		if (12 * 4 + 2 - (workStartHour * 4 + workStartMin) > 12)
+			schedule = fillDay(schedule, taskEnum.BREAK, l, 10, 1, 0, 1);
+	}
 	//fill lunch hours
 	schedule = fillWeek(schedule, taskEnum.LUNCH, 12, 2, 1, 0);
 	return schedule;
 }
+
+//var s = generateSchedule(9, 0, 17, 0, [true, true, true, true, true, false, false]);
