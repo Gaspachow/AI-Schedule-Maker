@@ -387,7 +387,7 @@ select {
 }
 
 .day:not(:last-child) {
-  border-right: 1px solid grey;
+  border-right: 1px solid white;
 }
 
 .hour {
@@ -395,6 +395,7 @@ select {
 }
 
 .minutes {
+  box-sizing: border-box;
   width: 100%;
   text-align: center;
   height: calc(1000px / 72);
@@ -422,7 +423,6 @@ select {
   border-radius: 5px;
   width: 100%;
   border: 1px solid rgb(77, 77, 77);
-  height: 1000px;
 }
 #weekdays {
   display: flex;
@@ -451,11 +451,11 @@ select {
 .topExt:not(.task1) {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border-top: 2px solid white;
+  border-top: 1px solid white;
 }
 
 .botExt:not(.task1) {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-  border-bottom: 2px solid white;
+  border-bottom: 1px solid white;
 }
