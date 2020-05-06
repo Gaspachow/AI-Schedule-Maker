@@ -36,6 +36,10 @@ function getSchedule() {
     return schedule;
 }
 
+
+var taskMessage = ['<p>wake-up</p>', '<p>sleep</p>', '<p>work</p>', '<p>break</p>', '<p>breakfast</p>', '<p>Lunch</p>'];
+
+
 function makeCalendar() {
     var schedule = getSchedule();
     var lastDiv;
@@ -62,6 +66,7 @@ function makeCalendar() {
             else if (divCreateMin.classList[1] !== lastDiv.classList[1])
             {
                 divCreateMin.classList.add("topExt");
+                divCreateMin.innerHTML = taskMessage[schedule[i][j][k]];
                 lastDiv.classList.add("botExt");
             }
             lastDiv = divCreateMin;
