@@ -4,7 +4,7 @@
 
 html {
   font-size: 14px;
-  background: #14337d;
+  background: #000F1E;
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 
@@ -400,7 +400,19 @@ select {
 .minutes {
   width: 100%;
   text-align: center;
-  padding: 3px 0px;
+  height: calc(1000px / 72);
+}
+
+.minutes p {
+  margin: 0px;
+  height: 0px;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #4f5858;
 }
 
 #finalResult {
@@ -413,6 +425,7 @@ select {
   border-radius: 5px;
   width: 100%;
   border: 1px solid rgb(77, 77, 77);
+  height: 1000px;
 }
 #weekdays {
   display: flex;
@@ -430,12 +443,22 @@ select {
   background-color: lightpink;
 }
 
-.topExt {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+.task9 {
+  background-color: lightgreen;
 }
 
-.botExt {
+.task8 {
+  background-color: lightcoral;
+}
+
+.topExt:not(.task1) {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top: 2px solid white;
+}
+
+.botExt:not(.task1) {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-bottom: 2px solid white;
 }
