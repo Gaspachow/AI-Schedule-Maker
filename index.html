@@ -88,6 +88,42 @@
             </form>
             <!-- The form_2 below is displayed by nextStep() function when the button is clicked (and form_1 above is hidden) -->
 
+            <form id="form_2" style="display: none">
+
+                <!-- QUESTION 1 -->
+
+                <div class="form__row">
+                    <h6 class="start_work_question">At what time do you wake-up?</h6>
+                    <div class="hourInput">
+                        <select id="wakeup-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="wakeup-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+
+                </div>
+        
+                <!-- QUESTION 2 -->
+
+                <div class="form__row">
+                    <h6>...And go to sleep?</h6>
+                    <div class="hourInput">
+                        <select id="tosleep-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="tosleep-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+                </div>
+            </form>
+
+
+            <!-- Final result below is displayed by finalResult() when the finish button is clicked (and previous form is hidden) -->
             <div id='finalResult' style="display: none">
                 <div id="weekdays">
                     <p>Monday</p>
@@ -102,7 +138,7 @@
                 </div>
             </div>
         </div>
-     <button type="button" id="create-button" class="button" name="action">Continue</button>
+     <button type="button" id="next-button" class="button" name="action">Continue</button>
 
      <script type="text/javascript" src="js/schedule.js"></script>
      <script type="text/javascript" src="js/front.js"></script>

@@ -1,8 +1,18 @@
-document.getElementById("create-button").addEventListener("click", nextStep);
+document.getElementById("next-button").addEventListener("click", lastStep);
 
-function  nextStep() {
+function  lastStep() {
+    console.log("done");
     document.getElementById("form_1").style.display = "none";
-    document.getElementById("create-button").style.display = "none";
+    document.getElementById("next-button").innerHTML = "Get your schedule";
+    document.getElementById("next-button").removeEventListener("click", lastStep);
+    document.getElementById("next-button").addEventListener("click", finalResult);
+    document.getElementById("form_2").style.display = "block";
+}
+
+
+function  finalResult() {
+    document.getElementById("form_2").style.display = "none";
+    document.getElementById("next-button").style.display = "none";
     document.getElementById("finalResult").style.display = "block";
     document.getElementsByClassName("dialog-box")[0].style.display = "none";
     makeCalendar();

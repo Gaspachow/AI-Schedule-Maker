@@ -1,14 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@800&family=Varela+Round&display=swap');
 
-/* - Global Styles - */
-
 html {
   font-size: 14px;
   background: #000F1E;
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 
-  /* background: #FFFAE5; */
 }
 
 body {
@@ -55,7 +52,7 @@ form {
 }
 
 .dialog-box {
-  background: #FFFAE5;
+  background: white;
   box-sizing: border-box;
   padding: 16px 24px;
   margin: 32px auto;
