@@ -33,7 +33,7 @@ function fillDay(schedule, task, day, startHour, startMin, lengthHour, lengthMin
 	if (startMin > 0 && lengthHour > 0)
 	{
 		a = startMin;
-		while (a < 4)
+		while (a < 2)
 			schedule[day][startHour][a++] = task;
 		a = 0;
 		while (a < startMin)
@@ -43,7 +43,7 @@ function fillDay(schedule, task, day, startHour, startMin, lengthHour, lengthMin
 	if (lengthMinute > 0)
 	{
 		a = startMin;
-		while (a < 4 && lengthMinute > 0)
+		while (a < 2 && lengthMinute > 0)
 		{
 			schedule[day][startHour + lengthHour][a++] = task;
 			lengthMinute--;
@@ -54,7 +54,7 @@ function fillDay(schedule, task, day, startHour, startMin, lengthHour, lengthMin
 	}
 	for (var j = startHour + shiftBegin; j < startHour + lengthHour; j++)
 	{
-		for (var k = 0; k < 4; k++)
+		for (var k = 0; k < 2; k++)
 			schedule[day][j][k] = task;
 	}
 	return schedule;
@@ -78,7 +78,7 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 		for (var j = 0; j < 24; j++)
 		{
 			schedule[i][j] = []
-			for (var k = 0; k < 4; k++)
+			for (var k = 0; k < 2; k++)
 				schedule[i][j][k] = taskEnum.SLEEP;
 		}
 	}
@@ -89,22 +89,22 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 		if (workArray[l])
 			schedule = fillDay(schedule, taskEnum.WORK, l, workStartHour, workStartMin, workEndHour - workStartHour, workEndMinute - workStartMin);
 		//check if morning break is possible
-		if (12 * 4 + 2 - (workStartHour * 4 + workStartMin) > 12)
+		if (12 * 2 + 1 - (workStartHour * 2 + workStartMin) > 12)
 			schedule = fillDay(schedule, taskEnum.BREAK, l, 10, 1, 0, 1);
 		//check if afternoon break is possible
 		if (workEndHour >= 16)
 		{
-			let time = workEndHour * 4 + workEndMinute - (13 * 4 + 2);
-			schedule = fillDay(schedule, taskEnum.BREAK, l, 13 + Math.floor(time / 8), time % 4, 0, 1);
+			let time = workEndHour * 2 + workEndMinute - (13 * 2 + 1);
+			schedule = fillDay(schedule, taskEnum.BREAK, l, 13 + Math.floor(time / 4), time % 2, 0, 1);
 		}
 		//Add exercice every other day and yoga the rest of days
 		if (l % 2 == 0 && workArray[l])
 			schedule = fillDay(schedule, taskEnum.EXERCISE, l, workEndHour, workEndMinute, 1, 0);
 		else if (l % 2 == 1 && workArray[l])
-			schedule = fillDay(schedule, taskEnum.YOGA, l, workEndHour, workEndMinute, 0, 2);
+			schedule = fillDay(schedule, taskEnum.YOGA, l, workEndHour, workEndMinute, 0, 1);
 	}
 	//fill lunch hours
-	schedule = fillWeek(schedule, taskEnum.LUNCH, 12, 2, 1, 0);
+	schedule = fillWeek(schedule, taskEnum.LUNCH, 12, 1, 1, 0);
 	return schedule;
 }
 
