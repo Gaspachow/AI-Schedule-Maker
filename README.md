@@ -1,1 +1,5 @@
-# AI-Schedule-Maker
+# project-couch
+Description: TBD
+
+# Contributors:
+cjaimes - gsmets

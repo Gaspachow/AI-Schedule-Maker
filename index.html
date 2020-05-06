@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schedule Generator</title>
+  <meta name="description" content="AI-Generated schedule - COVID-19 edition">
+  <meta name="author" content="cjaimes - gsmets">
+  <meta name="theme-color" content="#def2d9">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body id="body">
+
+    <div class="dialog-box">
+        <h2 class="dialog-box__name">Hello!</h2>
+        <p>Hello, and welcome to the project,<br>
+            We know that it's never easy to transition from working at the office to working from home.<br>
+            And this is why we created a tool to help you sort a schedule suited to your needs.
+        </p>
+        <p><b>Enjoy!</b></p>
+    </div>
+    <!-- CREATE YOUR SCHEDULE square starts here -->
+    <div class="phone">
+        <h1>5-minute Weekly Remote Work Schedule Maker</h1>
+        <div class="phone-center">
+
+            <form id="form_1">
+
+                <!-- QUESTION 1 -->
+
+                <div class="form__row">
+                    <h6 class="start_work_question">At what time do you start working?</h6>
+                    <div class="hourInput">
+                        <select id="startwork-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="startwork-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+
+                </div>
+        
+                <!-- QUESTION 2 -->
+
+                <div class="form__row">
+                    <h6>At what time do you stop working?</h6>
+                    <div class="hourInput">
+                        <select id="stopwork-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="stopwork-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+                </div>
+        
+                <!-- QUESTION 3 -->
+
+                <div class="form__row">
+                    <h6>Which days of the week are you working?</h6>
+                    <div class="input__group">
+                        <label for="">Select all days you are working</label>
+                        <div class="input__checkbox-buttons">
+                            <input type="checkbox" id="workMonday" name="hobbie">
+                            <label for="workMonday">Monday</label>
+                            <input type="checkbox" id="workTuesday" name="hobbie">
+                            <label for="workTuesday">Tuesday</label>
+                            <input type="checkbox" id="workWednesday" name="hobbie">
+                            <label for="workWednesday">Wednesday</label>
+                            <input type="checkbox" id="workThursday" name="hobbie">
+                            <label for="workThursday">Thursday</label>
+                            <input type="checkbox" id="workFriday" name="hobbie">
+                            <label for="workFriday">Friday</label>
+                            <input type="checkbox" id="workSaturday" name="hobbie">
+                            <label for="workSaturday">Saturday</label>
+                            <input type="checkbox" id="workSunday" name="hobbie">
+                            <label for="workSunday">Sunday</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- The form_2 below is displayed by nextStep() function when the button is clicked (and form_1 above is hidden) -->
+
+            <div id="weekCalendar" style="display: none">
+            </div>
+        </div>
+     <button type="button" id="create-button" class="button" name="action">Continue</button>
+
+     <script type="text/javascript" src="js/front.js"></script>
+</body>
+</html>

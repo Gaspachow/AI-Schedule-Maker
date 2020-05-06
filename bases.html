@@ -1,0 +1,118 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schedule Generator</title>
+  <meta name="description" content="AI-Generated schedule - COVID-19 edition">
+  <meta name="author" content="cjaimes - mwane - gsmets">
+  <meta name="theme-color" content="#def2d9">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body id="body">
+
+    <div class="dialog-box">
+        <h2 class="dialog-box__name">Hello!</h2>
+        <p>Hello, and welcome to the project,<br>
+            We know that it's never easy to transition from working at the office to working from home.<br>
+            And this is why we created a tool to help you sort a schedule suited to your needs.
+        </p>
+        <p><b>Enjoy!</b></p>
+    </div>
+    <!-- CREATE YOUR SCHEDULE square starts here -->
+    <div class="phone">
+        <h1>Remote Work Schedule Creator 2000</h1>
+        <div class="phone-center">
+
+            <form id="form_1">
+
+                <!-- QUESTION 1 -->
+
+                <div class="form__row">
+                    <h6 class="do_you_work">Are you employed?</h6>
+                    <div class="input__group">
+                        <label>bruh do you work?</label>
+                        <div class="input__radio-buttons">
+                            <input type="radio" id="work-radio-no" name="work" value="false" checked="">
+                            <label for="work-radio-no" data-i18n="work.no">No</label>
+                            <input type="radio" id="work-radio-yes" name="work" value="true">
+                            <label for="work-radio-yes" data-i18n="work.yes">Yes</label>
+                        </div>
+                    </div>
+
+                </div>
+        
+                <!-- QUESTION 2 -->
+
+                <div class="form__row">
+                    <h6>What's your main entertainment thingy (test)</h6>
+                    <div class="input__group">
+                        <label for="">don't be shy. lol jk... <i>unless?</i></label>
+                        <div class="input__radio-buttons">
+                            <input type="radio" id="hobbie-radio-unknown" name="hobbie" value="-1" checked="">
+                            <label for="hobbie-radio-unknown">I don't know</label>
+                            <input type="radio" id="hobbie-radio-Ping.Pong" name="hobbie" value="0">
+                            <label for="hobbie-radio-Ping.Pong">Ping Pong</label>
+                            <input type="radio" id="hobbie-radio-Games" name="hobbie" value="3">
+                            <label for="hobbie-radio-Games">video games</label>
+                            <input type="radio" id="hobbie-radio-lol" name="hobbie" value="1">
+                            <label for="hobbie-radio-lol">FISHING!</label>
+                            <input type="radio" id="hobbie-radio-weird" name="hobbie" value="2">
+                            <label for="hobbie-radio-weird">You're weird...</label>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- QUESTION 3 -->
+
+                <div class="form__row">
+                    <h6>Last question BRUH!</h6>
+                    <div class="input__group">
+                        <label for="wakeup">What time do you wake up?</label>
+                        <div class="hourInput">
+                            <select id="wakeup-h" class="selectHours" name="hours">
+                                <!-- This HTML is filled by makeHourInputs() -->
+                            </select>
+                            :
+                            <select id="wakeup-m" class="selectMinutes" name="minutes">
+                                <!-- This HTML is filled by makeHourInputs() -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUESTION 4 -->
+
+                <div class="form__row">
+                    <h6>Last last question BRUH! (pulled a sneaky on ya!)</h6>
+                    <div class="input__group">
+                        <label for="wakeup">What time do you go to sleep?</label>
+                        <div class="hourInput">
+                            <select id="sleep-h" class="selectHours" name="hours">
+                                <!-- This HTML is filled by makeHourInputs() -->
+                            </select>
+                            :
+                            <select id="sleep-m" class="selectMinutes" name="minutes">
+                                <!-- This HTML is filled by makeHourInputs() -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!-- The form_2 below is displayed by nextStep() function when the button is clicked (and form_1 above is hidden) -->
+
+            <div id="form_2" style="display: none">
+               <img src="images/knuckles.jpeg" alt="u do not kno da wae">
+               <p>front end works! wouhou.</p>
+            </div>
+        </div>
+     <button type="button" id="create-button" class="button" name="action">Create Schedule!</button>
+
+     <script type="text/javascript" src="js/front.js"></script>
+</body>
+</html>
