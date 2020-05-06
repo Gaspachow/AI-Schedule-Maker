@@ -3,7 +3,7 @@ document.getElementById("create-button").addEventListener("click", nextStep);
 function  nextStep() {
     document.getElementById("form_1").style.display = "none";
     document.getElementById("create-button").style.display = "none";
-    document.getElementById("finalResult").style.display = "flex";
+    document.getElementById("finalResult").style.display = "block";
     makeCalendar();
 }
 
