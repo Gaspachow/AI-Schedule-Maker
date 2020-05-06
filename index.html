@@ -80,19 +80,22 @@
                             <label for="workDay4">Friday</label>
                             <input type="checkbox" id="workDay5" name="weekDay">
                             <label for="workDay5">Saturday</label>
-                            <input type="checkbox" id="workDay5" name="weekDay">
-                            <label for="workDay5">Sunday</label>
+                            <input type="checkbox" id="workDay6" name="weekDay">
+                            <label for="workDay6">Sunday</label>
                         </div>
                     </div>
                 </div>
             </form>
             <!-- The form_2 below is displayed by nextStep() function when the button is clicked (and form_1 above is hidden) -->
 
-            <div id="weekCalendar" style="display: none">
+            <div id='finalResult' style="display: none">
+                <div id="weekCalendar">
+                </div>
             </div>
         </div>
      <button type="button" id="create-button" class="button" name="action">Continue</button>
 
+     <script type="text/javascript" src="js/schedule.js"></script>
      <script type="text/javascript" src="js/front.js"></script>
 </body>
 </html>
