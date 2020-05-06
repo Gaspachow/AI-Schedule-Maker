@@ -381,15 +381,18 @@ select {
   width: calc(100% / 7);
 }
 
+.day:not(:last-child) {
+  border-right: 1px solid grey;
+}
+
 .hour {
   width: 100%;
-  border: 1px solid black;
 }
 
 .minutes {
   width: 100%;
   text-align: center;
-  padding: 3px;
+  padding: 3px 0px;
 }
 
 #finalResult {
@@ -403,6 +406,7 @@ select {
   display: flex;
   border-radius: 5px;
   width: 100%;
+  border: 1px solid rgb(77, 77, 77);
 }
 
 .task5 {
@@ -411,4 +415,14 @@ select {
 
 .task2 {
   background-color: lightblue;
+}
+
+.topExt {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.botExt {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

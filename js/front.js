@@ -38,6 +38,7 @@ function getSchedule() {
 
 function makeCalendar() {
     var schedule = getSchedule();
+    var lastDiv;
 
     var calendarDiv = document.getElementById("weekCalendar");
     for(i=0;i<=6;i++){
@@ -56,9 +57,18 @@ function makeCalendar() {
             divCreateMin.id = ('m' + i + '.' + j + '.' + k);
             divCreateHor.appendChild(divCreateMin);
             divCreateMin.classList.add('task' + schedule[i][j][k]);
+            if (j === 0 && k === 0)
+                divCreateMin.classList.add("topExt");
+            else if (divCreateMin.classList[1] !== lastDiv.classList[1])
+            {
+                divCreateMin.classList.add("topExt");
+                lastDiv.classList.add("botExt");
+            }
+            lastDiv = divCreateMin;
         }
       }
     }
+
     console.log("Calendar Made!");
 }
 
