@@ -76,7 +76,7 @@ function makeCalendar() {
         divCreateHor.classList.add('hour');
         divCreateHor.id = ('h' + i + '.' + j);
         divCreateVer.appendChild(divCreateHor);
-        for(k = 0; k <= 3; k++){
+        for(k = 0; k <= 1; k++){
             let divCreateMin = document.createElement('div');
             divCreateMin.classList.add('minutes');
             divCreateMin.id = ('m' + i + '.' + j + '.' + k);
