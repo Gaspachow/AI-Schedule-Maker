@@ -1,9 +1,20 @@
-document.getElementById("create-button").addEventListener("click", nextStep);
+document.getElementById("next-button").addEventListener("click", lastStep);
 
-function  nextStep() {
+function  lastStep() {
+    console.log("done");
     document.getElementById("form_1").style.display = "none";
-    document.getElementById("create-button").style.display = "none";
+    document.getElementById("next-button").innerHTML = "Get your schedule";
+    document.getElementById("next-button").removeEventListener("click", lastStep);
+    document.getElementById("next-button").addEventListener("click", finalResult);
+    document.getElementById("form_2").style.display = "block";
+}
+
+
+function  finalResult() {
+    document.getElementById("form_2").style.display = "none";
+    document.getElementById("next-button").style.display = "none";
     document.getElementById("finalResult").style.display = "block";
+    document.getElementsByClassName("dialog-box")[0].style.display = "none";
     makeCalendar();
 }
 
@@ -37,7 +48,17 @@ function getSchedule() {
 }
 
 
-var taskMessage = ['<p>wake-up</p>', '<p>sleep</p>', '<p>work</p>', '<p>break</p>', '<p>breakfast</p>', '<p>Lunch</p>'];
+var taskMessage = ['<p>wake-up</p>',
+                   '<p>sleep</p>',
+                   '<p>work</p>',
+                   '<p>break</p>',
+                   '<p>breakfast</p>',
+                   '<p>Lunch</p>',
+                   '<p>Dinner</p>',
+                   '<p>Leisure</p>',
+                   '<p>Exercise</p>',
+                   '<p>Yoga</p>',
+                   '<p>Crea Time</p>'];
 
 
 function makeCalendar() {
@@ -50,7 +71,7 @@ function makeCalendar() {
       divCreateVer.classList.add('day');
       divCreateVer.id = 'd' + i;
       calendarDiv.appendChild(divCreateVer);
-      for(j=0;j<=23;j++){
+      for(j=6;j<=23;j++){
         let divCreateHor = document.createElement('div');
         divCreateHor.classList.add('hour');
         divCreateHor.id = ('h' + i + '.' + j);
@@ -61,12 +82,16 @@ function makeCalendar() {
             divCreateMin.id = ('m' + i + '.' + j + '.' + k);
             divCreateHor.appendChild(divCreateMin);
             divCreateMin.classList.add('task' + schedule[i][j][k]);
-            if (j === 0 && k === 0)
-                divCreateMin.classList.add("topExt");
-            else if (divCreateMin.classList[1] !== lastDiv.classList[1])
+            if (j === 6 && k === 0)
             {
                 divCreateMin.classList.add("topExt");
                 divCreateMin.innerHTML = taskMessage[schedule[i][j][k]];
+            }
+            else if (divCreateMin.classList[1] !== lastDiv.classList[1])
+            {
+                divCreateMin.classList.add("topExt");
+                if (schedule[i][j][k] !== 1)
+                    divCreateMin.innerHTML = taskMessage[schedule[i][j][k]];
                 lastDiv.classList.add("botExt");
             }
             lastDiv = divCreateMin;
