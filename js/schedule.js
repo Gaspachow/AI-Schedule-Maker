@@ -8,11 +8,10 @@ const taskEnum = Object.freeze(
 		BREAKFAST: 4,
 		LUNCH: 5,
 		DINNER: 6,
-		LEISURE: 7,
+		FREE_TIME: 7,
 		EXERCISE: 8,
 		YOGA: 9,
-		CREATIVE_TIME: 10,
-		FREE_TIME: 11
+		CREATIVE_TIME: 10
 	});
 
 const day = Object.freeze(
