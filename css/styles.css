@@ -521,6 +521,10 @@ select {
   height: 908px;
 }
 
+#over-details {
+  font-size: 15px;
+}
+
 #over-square{
   vertical-align: top;
   text-align: center;
