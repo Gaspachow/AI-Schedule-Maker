@@ -393,6 +393,7 @@ select {
 
 .hour {
   width: 100%;
+  height: calc(900px / 18);
 }
 
 .minutes {
@@ -400,7 +401,7 @@ select {
   width: 100%;
   min-width: 77px;
   text-align: center;
-  height: calc(1000px / 36);
+  height: 50%;
 }
 
 .minutes p {
@@ -416,9 +417,22 @@ select {
   color: #4f5858;
 }
 
+#hourCol p {
+  margin: 0px;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  text-align: right;
+  font-weight: 800;
+  font-size: 1rem;
+  height: calc(900px / 18);
+  transform: translateY(-17%);
+  font-family: 'Raleway', sans-serif;
+  color: #837865;
+}
+
 #finalResult {
   align-items: center;
-  width: 80%;
+  width: 90%;
 }
 
 #weekCalendar {
@@ -428,6 +442,14 @@ select {
   min-width: 550px;
   border: 1px solid rgb(77, 77, 77);
 }
+
+#calendarAndHours {
+  display: flex;
+  border-radius: 5px;
+  width: 100%;
+  min-width: 550px;
+}
+
 #weekdays {
   display: flex;
 }
@@ -480,6 +502,15 @@ select {
 
 #over-hour {
   font-size: 30px;
+}
+
+#hourCol, p#emptyDay {
+  width: 5%;
+  text-align: right;
+}
+
+#hourCol {
+  height: 908px;
 }
 
 #over-square{
