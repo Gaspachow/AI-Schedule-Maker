@@ -28,7 +28,43 @@
         <h1>5-minute Weekly Remote Work Schedule Maker</h1>
         <div class="phone-center">
 
-            <form id="form_1">
+            <form id="form_1" style="display: block">
+
+                <!-- QUESTION 1 -->
+
+                <div class="form__row">
+                    <h6 class="start_work_question">At what time do you wake-up?</h6>
+                    <div class="hourInput">
+                        <select id="wakeup-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="wakeup-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+
+                </div>
+        
+                <!-- QUESTION 2 -->
+
+                <div class="form__row">
+                    <h6>...And go to sleep?</h6>
+                    <div class="hourInput">
+                        <select id="tobed-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="tobed-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+                </div>
+            </form>
+
+            <!-- The form_2 below is displayed by nextStep1() function when the button is clicked (and form_1 above is hidden) -->
+
+            <form id="form_2" style="display: none">
 
                 <!-- QUESTION 1 -->
 
@@ -86,41 +122,9 @@
                     </div>
                 </div>
             </form>
-            <!-- The form_2 below is displayed by nextStep() function when the button is clicked (and form_1 above is hidden) -->
 
-            <form id="form_2" style="display: none">
-
-                <!-- QUESTION 1 -->
-
-                <div class="form__row">
-                    <h6 class="start_work_question">At what time do you wake-up?</h6>
-                    <div class="hourInput">
-                        <select id="wakeup-h" class="selectHours" name="hours">
-                            <!-- This HTML is filled by makeHourInputs() -->
-                        </select>
-                        :
-                        <select id="wakeup-m" class="selectMinutes" name="minutes">
-                            <!-- This HTML is filled by makeHourInputs() -->
-                        </select>
-                    </div>
-
-                </div>
-        
-                <!-- QUESTION 2 -->
-
-                <div class="form__row">
-                    <h6>...And go to sleep?</h6>
-                    <div class="hourInput">
-                        <select id="tosleep-h" class="selectHours" name="hours">
-                            <!-- This HTML is filled by makeHourInputs() -->
-                        </select>
-                        :
-                        <select id="tosleep-m" class="selectMinutes" name="minutes">
-                            <!-- This HTML is filled by makeHourInputs() -->
-                        </select>
-                    </div>
-                </div>
-            </form>
+    
+            <!-- The form_3 below is displayed by nextStep2() function when the button is clicked (and form_1 above is hidden) -->
 
             <form id="form_3" style="display: none">
 

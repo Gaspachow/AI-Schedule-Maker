@@ -69,6 +69,10 @@ function getSchedule() {
     var workStartMin = Number(document.getElementById("startwork-m").value);
     var workEndHour = Number(document.getElementById("stopwork-h").value);
     var workEndMin = Number(document.getElementById("stopwork-m").value);
+    var wakeUpHour = Number(document.getElementById("wakeup-h").value);
+    var wakeUpMin = Number(document.getElementById("wakeup-m").value);
+    var toBedHour = Number(document.getElementById("tobed-h").value);
+    var toBedMin = Number(document.getElementById("tobed-m").value);
     var workArray = [document.getElementById("workDay0").checked,
                      document.getElementById("workDay1").checked,
                      document.getElementById("workDay2").checked,
@@ -77,7 +81,7 @@ function getSchedule() {
                      document.getElementById("workDay5").checked,
                      document.getElementById("workDay6").checked];
     
-    var schedule = generateSchedule(workStartHour, workStartMin, workEndHour, workEndMin, workArray);
+    var schedule = generateSchedule(workStartHour, workStartMin, workEndHour, workEndMin, workArray, wakeUpHour, wakeUpMin);
     return schedule;
 }
 
@@ -92,7 +96,8 @@ var taskMessage = ['<p>wake-up</p>',
                    '<p>Leisure</p>',
                    '<p>Exercise</p>',
                    '<p>Yoga</p>',
-                   '<p>Crea Time</p>'];
+                   '<p>Crea Time</p>',
+                   '<p>Free Time</p>'];
 
 
 function makeCalendar() {
