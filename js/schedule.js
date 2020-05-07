@@ -5,13 +5,12 @@ const taskEnum = Object.freeze(
 		SLEEP: 1,
 		WORK: 2,
 		BREAK: 3,
-		BREAKFAST: 4,
+		EVENING_TIME: 4,
 		LUNCH: 5,
 		DINNER: 6,
 		FREE_TIME: 7,
 		EXERCISE: 8,
-		YOGA: 9,
-		EVENING_TIME: 10,
+		YOGA: 9
 
 	});
 
@@ -133,7 +132,7 @@ function getTaskOfDay(time)
 	return [startHour, startMin * 3, endHour, endMinute * 3];
 }
 
-function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinute, workArray, wakeHour, wakeMin, lunchHour, lunchMin, dinnerHour, dinnerMin)
+function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinute, workArray, lunchHour, lunchMin, dinnerHour, dinnerMin)
 {
 	//setup schedule with only sleep
 	var schedule = [];
@@ -174,18 +173,19 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 			var freeTimeLength = dinnerHour * 2 + dinnerMin - exoEnd;
 			schedule = fillDay(schedule, taskEnum.FREE_TIME, l, Math.floor(exoEnd / 2), exoEnd % 2, Math.floor(freeTimeLength / 2), freeTimeLength % 2);
 
-			var  timeUntilWork = workStartHour * 2 + workStartMin - (wakeHour * 2 + wakeMin);
+			var  timeToWork = workStartHour * 2 + workStartMin;
+
 			//add wake up time
-			if (timeUntilWork >= 2)
+			if (timeToWork > 9 * 2)
 			{
-				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, wakeHour, wakeMin, 1, 0);
-				timeUntilWork -= 2;
+				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, 8, 0, 1, 0);
+				var timeUntilWork = workStartHour * 2 + workStartMin - 9 * 2;
 				if (timeUntilWork > 0)
-					schedule = fillDay(schedule, taskEnum.FREE_TIME, l, wakeHour + 1, wakeMin, Math.floor(timeUntilWork / 2), timeUntilWork % 2);
+					schedule = fillDay(schedule, taskEnum.FREE_TIME, l, 9, 0, Math.floor(timeUntilWork / 2), timeUntilWork % 2);
 			}
-			else if (timeUntilWork > 0)
+			else
 			{
-				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, wakeHour, wakeMin, 0, 1);
+				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, workStartHour - 1, workStartMin, 1, 0);
 			}
 		}
 		//fill evending time
