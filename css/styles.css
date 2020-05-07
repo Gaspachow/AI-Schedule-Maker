@@ -454,7 +454,7 @@ select {
   display: flex;
 }
 
-.task5 {
+.task5, .task6 {
   background-color: orange;
 }
 
