@@ -11,7 +11,8 @@ const taskEnum = Object.freeze(
 		FREE_TIME: 7,
 		EXERCISE: 8,
 		YOGA: 9,
-		CREATIVE_TIME: 10
+		EVENING_TIME: 10,
+
 	});
 
 const day = Object.freeze(
@@ -187,11 +188,18 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, wakeHour, wakeMin, 0, 1);
 			}
 		}
+		//fill evending time
+		var timeLeft = 24 * 2 - (dinnerHour * 2 + 2 + dinnerMin);
+		schedule = fillDay(schedule, taskEnum.EVENING_TIME, l, dinnerHour + 1, dinnerMin, Math.floor(timeLeft / 2), timeLeft % 2);
 	}
 	//fill lunch hours
 	schedule = fillWeek(schedule, taskEnum.LUNCH, lunchHour, lunchMin, 1, 0);
+	schedule = fillDay(schedule, taskEnum.LUNCH, 5, lunchHour, lunchMin, 1, 0);
+	schedule = fillDay(schedule, taskEnum.LUNCH, 6, lunchHour, lunchMin, 1, 0);
 	//fill dinner hours
 	schedule = fillWeek(schedule, taskEnum.DINNER, dinnerHour, dinnerMin, 1, 0);
+	schedule = fillDay(schedule, taskEnum.DINNER, 5, dinnerHour, dinnerMin, 1, 0);
+	schedule = fillDay(schedule, taskEnum.DINNER, 6, dinnerHour, dinnerMin, 1, 0);
 	gSchedule = schedule;
 	return schedule;
 }
