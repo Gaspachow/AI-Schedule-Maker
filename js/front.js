@@ -40,6 +40,7 @@ function  finalResult() {
     document.getElementById("next-button").style.display = "none";
     document.getElementById("finalResult").style.display = "block";
     document.getElementsByClassName("dialog-box")[0].style.display = "none";
+    document.getElementsByTagName("h1")[0].style.display = "none";
     makeCalendar();
 }
 
