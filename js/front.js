@@ -7,13 +7,14 @@ var prevTask
 
 function displayForm() {
     document.getElementById("d-box").classList.add("hidden");
+    document.getElementById("d-name").classList.add("hidden");
     document.getElementById("start-button").classList.add("hidden");
     setTimeout(displayForm2, 1000);
 }
 
 function displayForm2() {
     // document.getElementById("d-box").style.display = "none";
-    // document.getElementById("start-button").style.display = "none";
+    document.getElementById("start-button").style.display = "none";
     document.getElementById("phone").classList.remove("hidden");
     document.getElementById("phone").classList.add("visible");
 }
@@ -25,6 +26,14 @@ function overlay(evt) {
     if (type == "minutes")
     {
         var hours = getTaskOfDay(evt.currentTarget.id);
+        if (hours[0] === 0)
+            hours[0] = '00';
+        else if (hours[0] === 24)
+            hours[0] = '00';
+        if (hours[2] === 0)
+            hours[2] = '00';
+        else if (hours[2] === 24)
+            hours[2] = '00';
         document.getElementById("over-text").innerHTML = taskMessage[task];
         document.getElementById("over-hour").innerHTML = hours[0] + ':' + hours[1] + '0' + ' - ' + hours[2] + ':' + hours[3] + '0';
         document.getElementById("over-details").innerHTML = overDetails[task]
@@ -33,6 +42,7 @@ function overlay(evt) {
         document.getElementById("overlay").style.display = "block";
         console.log(evt.currentTarget.classList);
         prevTask = evt.currentTarget.classList[1];
+        console.log(hours[2]);
     }
     else
     {
@@ -52,7 +62,7 @@ function wait(ms){
 function  nextStep1() {
     console.log("done");
     document.getElementById("form_1").style.display = "none";
-    document.getElementById("next-button").innerHTML = "Get your schedule";
+    document.getElementById("next-button").innerHTML = "Next";
     document.getElementById("next-button").removeEventListener("click", nextStep1);
     document.getElementById("next-button").addEventListener("click", nextStep2);
     document.getElementById("form_2").style.display = "block";
@@ -94,10 +104,6 @@ function getSchedule() {
     var workStartMin = Number(document.getElementById("startwork-m").value);
     var workEndHour = Number(document.getElementById("stopwork-h").value);
     var workEndMin = Number(document.getElementById("stopwork-m").value);
-    var wakeUpHour = Number(document.getElementById("wakeup-h").value);
-    var wakeUpMin = Number(document.getElementById("wakeup-m").value);
-    var toBedHour = Number(document.getElementById("tobed-h").value);
-    var toBedMin = Number(document.getElementById("tobed-m").value);
     var lunchH = Number(document.getElementById("lunch-h").value);
     var lunchM = Number(document.getElementById("lunch-m").value);
     var dinnerH = Number(document.getElementById("dinner-h").value);
@@ -109,17 +115,24 @@ function getSchedule() {
                      document.getElementById("workDay4").checked,
                      document.getElementById("workDay5").checked,
                      document.getElementById("workDay6").checked];
-    
-    var schedule = generateSchedule(workStartHour, workStartMin, workEndHour, workEndMin, workArray, wakeUpHour, wakeUpMin, lunchH, lunchM, dinnerH, dinnerM);
+    var exerciseAct = document.getElementById("exercise-act").value;
+    var zenAct = document.getElementById('zen-act').value;
+
+    if (exerciseAct !== "")
+        taskMessage[8] = exerciseAct;
+    if (zenAct !== "")
+        taskMessage[9] = zenAct;
+
+    var schedule = generateSchedule(workStartHour, workStartMin, workEndHour, workEndMin, workArray, lunchH, lunchM, dinnerH, dinnerM);
     return schedule;
 }
 
 
 var taskMessage = ['<p>wake-up</p>',
-                   '<p>sleep</p>',
+                   '<p> </p>',
                    '<p>work</p>',
                    '<p>break</p>',
-                   '<p>breakfast</p>',
+                   '<p>Evening</p>',
                    '<p>Lunch</p>',
                    '<p>Dinner</p>',
                    '<p>FreeTime</p>',
@@ -128,11 +141,11 @@ var taskMessage = ['<p>wake-up</p>',
                    '<p>Crea Time</p>',
                    '<p>Free Time</p>'];
 
-var overDetails = [`<p>Time for a new day! Shower, breakfast. <br > Why not listen a take a listen to this podcast?</p><div class="overlay-buttons"><form action="https://www.bbc.co.uk/podcasts" target="_blank" style="display: inline-block"><input class="button" type="submit" value="LISTEN NOW"/></form></div>`,
-                    `<p>A day well spent.<br> Try some calmer activities and go to bed whenever you feel ready.</p><div class="overlay-buttons"><form action="https://www.nhs.uk/live-well/sleep-and-tiredness/10-tips-to-beat-insomnia/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="TROUBLE SLEEPING?"/></form></div>`,
+var overDetails = [`<p>No better way to start the day than with a shower and breakfast. <br > Why not listen to a podcast?</p><div class="overlay-buttons"><form action="https://www.bbc.co.uk/podcasts" target="_blank" style="display: inline-block"><input class="button" type="submit" value="LISTEN NOW"/></form></div>`,
+                    `<p>Have a good night!</p><div class="overlay-buttons"><form action="https://www.nhs.uk/live-well/sleep-and-tiredness/10-tips-to-beat-insomnia/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="TROUBLE SLEEPING?"/></form></div>`,
                     `<p>Try to set up yourself in a specific area only for work. <br >How about some piano instrumental?</p><div class="overlay-buttons"><form action="https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO" target="_blank" style="display: inline-block"><input class="button" type="submit" value="LISTEN NOW"/></form></div>`,
                     '<p>Time to breath.<br >Spend some time away from your work environment</p>',
-                    '<p>breakfast</p>',
+                    `<p>A day well spent.<br> Try some calmer activities and go to bed whenever you feel ready.</p>`,
                     `<p>Wether you'd like to order or looking <br />for some inspiration to cook, we have you covered!</p><div class="overlay-buttons"><form action="https://www.ubereats.com/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="ORDER"/></form><form action="https://www.marmiton.org/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="COOK"/></form></div>`,
                     `<p>Wether you'd like to order or looking <br />for some inspiration to cook, we have you covered!</p><div class="overlay-buttons"><form action="https://www.ubereats.com/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="ORDER"/></form><form action="https://www.marmiton.org/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="COOK"/></form></div>`,
                     `<p>This is your time! Do anything you enjoy.<br > Watch a series, play games, ...</p> <div class="overlay-buttons"><form action="https://worldoftanks.eu/" target="_blank" style="display: inline-block">    <input class="button" type="submit" value="LET'S PLAY!"/></form></div>`,

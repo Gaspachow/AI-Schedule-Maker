@@ -73,14 +73,9 @@
                     <h6>Last question BRUH!</h6>
                     <div class="input__group">
                         <label for="wakeup">What time do you wake up?</label>
-                        <div class="hourInput">
-                            <select id="wakeup-h" class="selectHours" name="hours">
-                                <!-- This HTML is filled by makeHourInputs() -->
-                            </select>
-                            :
-                            <select id="wakeup-m" class="selectMinutes" name="minutes">
-                                <!-- This HTML is filled by makeHourInputs() -->
-                            </select>
+                        <div class="input__group">
+                            <label data-i18n="times.morning" for="sell_4">AM</label>
+                            <input type="number" pattern="\d*" id="sell_4" placeholder="...">
                         </div>
                     </div>
                 </div>
