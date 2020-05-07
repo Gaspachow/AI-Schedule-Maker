@@ -129,7 +129,7 @@ function getTaskOfDay(time)
 		endHour++;
 		endMinute = 0;
 	}
-	return [startHour, startMin * 30, endHour, endMinute * 30];
+	return [startHour, startMin * 3, endHour, endMinute * 3];
 }
 
 function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinute, workArray)
