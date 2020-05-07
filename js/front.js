@@ -1,13 +1,16 @@
 document.getElementById("next-button").addEventListener("click", lastStep);
-document.getElementById("overlay").addEventListener("click", function(){overlay(false)});
+document.getElementById("overlay").addEventListener("click", overlay);
 
 
-function overlay(display, i, j, k) {
-    if (display)
+function overlay(evt) {
+    var type = evt.currentTarget.classList[0];
+    var task = evt.currentTarget.classList[1][4];
+
+    if (type == "minutes")
     {
-        document.getElementById("over-text").innerHTML = taskMessage;
+        document.getElementById("over-text").innerHTML = taskMessage[task];
         document.getElementById("overlay").style.display = "block";
-        console.log(i + ' ' + j + ' ' + k);
+        console.log(evt.currentTarget.classList);
     }
     else
     {
@@ -98,7 +101,7 @@ function makeCalendar() {
             divCreateMin.id = ('m' + i + '.' + j + '.' + k);
             divCreateHor.appendChild(divCreateMin);
             divCreateMin.classList.add('task' + schedule[i][j][k]);
-            divCreateMin.addEventListener("click", function (){overlay(true)});
+            divCreateMin.addEventListener("click", overlay);
             if (j === 6 && k === 0)
             {
                 divCreateMin.classList.add("topExt");
