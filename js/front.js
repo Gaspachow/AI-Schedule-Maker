@@ -13,7 +13,7 @@ function displayForm() {
 }
 
 function displayForm2() {
-    // document.getElementById("d-box").style.display = "none";
+    document.getElementById("d-box").style.display = "none";
     document.getElementById("start-button").style.display = "none";
     document.getElementById("phone").classList.remove("hidden");
     document.getElementById("phone").classList.add("visible");
@@ -78,12 +78,33 @@ function  nextStep2() {
 }
 
 function  finalResult() {
-    document.getElementById("form_3").style.display = "none";
-    document.getElementById("next-button").style.display = "none";
-    document.getElementById("finalResult").style.display = "block";
-    document.getElementsByClassName("dialog-box")[0].style.display = "none";
-    document.getElementsByTagName("h1")[0].style.display = "none";
+    // document.getElementById("form_3").style.display = "none";
+    // document.getElementById("next-button").style.display = "none";
+    // document.getElementById("finalResult").style.display = "block";
     makeCalendar();
+    displayCalendar();
+}
+
+function displayCalendar() {
+    document.getElementById("form_3").classList.add("hidden");
+    document.getElementById("next-button").classList.add("hidden");
+    document.getElementById("finalResult").classList.add("hidden");
+    document.getElementById("phone").classList.add("hidden");
+    setTimeout(displayCalendar2, 1000);
+}
+
+function displayCalendar2() {
+    document.getElementById("next-button").style.display = "none";
+    document.getElementById("form_3").style.display = "none";
+    document.getElementById("finalResult").style.display = "block";
+    setTimeout(displayCalendar3, 200);
+}
+
+function displayCalendar3() {
+    document.getElementById("phone").classList.remove("hidden");
+    document.getElementById("phone").classList.add("visible");
+    document.getElementById("finalResult").classList.remove("hidden");
+    document.getElementById("finalResult").classList.add("visible");
 }
 
 var hourHTML = "<option value=6>06</option><option value=7>07</option><option value=8>08</option><option value=9>09</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option><option value=20>20</option><option value=21>21</option><option value=22>22</option><option value=23>23</option>" ;
