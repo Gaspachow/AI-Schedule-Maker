@@ -6,12 +6,16 @@ var prevTask
 function overlay(evt) {
     var type = evt.currentTarget.classList[0];
     var task = evt.currentTarget.classList[1][4];
+    var workStartHour = document.getElementById("startwork-h").value;
+    var workStartMin = document.getElementById("startwork-m").value;
+    var workEndHour = document.getElementById("stopwork-h").value;
+    var workEndMin = document.getElementById("stopwork-m").value;
 
     if (type == "minutes")
     {
         document.getElementById("over-text").innerHTML = taskMessage[task];
-        document.getElementById("over-text").classList.remove(prevTask);
-        document.getElementById("over-text").classList.add(evt.currentTarget.classList[1]);
+        document.getElementById("over-square").classList.remove(prevTask);
+        document.getElementById("over-square").classList.add(evt.currentTarget.classList[1]);
         document.getElementById("overlay").style.display = "block";
         console.log(evt.currentTarget.classList);
         prevTask = evt.currentTarget.classList[1];
@@ -41,8 +45,8 @@ function  finalResult() {
     makeCalendar();
 }
 
-var hourHTML = "<option value=0>00</option><option value=1>01</option><option value=2>02</option><option value=3>03</option><option value=0>04</option><option value=5>05</option><option value=6>06</option><option value=7>07</option><option value=8>08</option><option value=9>09</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option><option value=20>20</option><option value=21>21</option><option value=22>22</option><option value=23>23</option>" ;
-var minutesHTML = "<option value=0>00</option><option value=1>15</option><option value=2>30</option><option value=3>45</option>"
+var hourHTML = "<option value=6>06</option><option value=7>07</option><option value=8>08</option><option value=9>09</option><option value=10>10</option><option value=11>11</option><option value=12>12</option><option value=13>13</option><option value=14>14</option><option value=15>15</option><option value=16>16</option><option value=17>17</option><option value=18>18</option><option value=19>19</option><option value=20>20</option><option value=21>21</option><option value=22>22</option><option value=23>23</option>" ;
+var minutesHTML = "<option value=0>00</option><option value=1>30</option>"
 function makeHourInputs() {
     var hourdivs = document.getElementsByClassName("selectHours");
     var minutedivs = document.getElementsByClassName("selectMinutes");

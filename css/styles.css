@@ -478,11 +478,26 @@ select {
   cursor: pointer; /* Add a pointer on hover */
 }
 
-#over-text{
+#overlay p {
   text-align: center;
   border-radius: 10px;
   position: absolute;
   width: 50%;
+  top: auto;
+  left: 50%;
+  font-size: 50px;
+  color: rgb(36, 36, 36);
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+#over-square{
+  vertical-align: top;
+  text-align: center;
+  border-radius: 10px;
+  position: absolute;
+  width: 50%;
+  height: 40%;
   top: 50%;
   left: 50%;
   font-size: 50px;
