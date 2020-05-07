@@ -122,6 +122,39 @@
                 </div>
             </form>
 
+            <form id="form_3" style="display: none">
+
+                <!-- QUESTION 1 -->
+
+                <div class="form__row">
+                    <h6 class="start_work_question">When would you like to have lunch?</h6>
+                    <div class="hourInput">
+                        <select id="lunch-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="lunch-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+
+                </div>
+        
+                <!-- QUESTION 2 -->
+
+                <div class="form__row">
+                    <h6>And when would you like to have dinner?</h6>
+                    <div class="hourInput">
+                        <select id="dinner-h" class="selectHours" name="hours">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                        :
+                        <select id="dinner-m" class="selectMinutes" name="minutes">
+                            <!-- This HTML is filled by makeHourInputs() -->
+                        </select>
+                    </div>
+                </div>
+            </form>
 
             <!-- Final result below is displayed by finalResult() when the finish button is clicked (and previous form is hidden) -->
             <div id='finalResult' style="display: none">

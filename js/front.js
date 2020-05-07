@@ -1,4 +1,4 @@
-document.getElementById("next-button").addEventListener("click", lastStep);
+document.getElementById("next-button").addEventListener("click", nextStep1);
 document.getElementById("overlay").addEventListener("click", overlay);
 
 var prevTask
@@ -25,18 +25,26 @@ function overlay(evt) {
     }
 }
 
-function  lastStep() {
+function  nextStep1() {
     console.log("done");
     document.getElementById("form_1").style.display = "none";
     document.getElementById("next-button").innerHTML = "Get your schedule";
-    document.getElementById("next-button").removeEventListener("click", lastStep);
-    document.getElementById("next-button").addEventListener("click", finalResult);
+    document.getElementById("next-button").removeEventListener("click", nextStep1);
+    document.getElementById("next-button").addEventListener("click", nextStep2);
     document.getElementById("form_2").style.display = "block";
 }
 
+function  nextStep2() {
+    console.log("done");
+    document.getElementById("form_2").style.display = "none";
+    document.getElementById("next-button").innerHTML = "Get your schedule";
+    document.getElementById("next-button").removeEventListener("click", nextStep2);
+    document.getElementById("next-button").addEventListener("click", finalResult);
+    document.getElementById("form_3").style.display = "block";
+}
 
 function  finalResult() {
-    document.getElementById("form_2").style.display = "none";
+    document.getElementById("form_3").style.display = "none";
     document.getElementById("next-button").style.display = "none";
     document.getElementById("finalResult").style.display = "block";
     document.getElementsByClassName("dialog-box")[0].style.display = "none";
