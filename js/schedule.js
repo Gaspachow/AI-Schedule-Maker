@@ -156,7 +156,7 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 			schedule = fillDay(schedule, taskEnum.WORK, l, workStartHour, workStartMin, workEndHour - workStartHour, workEndMinute - workStartMin);
 			var timeUntilLunch = lunchHour * 2 + lunchMin - (workStartHour * 2 + workStartMin);
 			//check if morning break is possible
-			if (timeUntilLunch > 6)
+			if (timeUntilLunch >= 6)
 				schedule = fillDay(schedule, taskEnum.BREAK, l, workStartHour + Math.floor(timeUntilLunch / 4), 0, 0, 1);
 			//check if afternoon break is possible
 			if (workEndHour >= 16)
@@ -169,6 +169,10 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 				schedule = fillDay(schedule, taskEnum.EXERCISE, l, workEndHour, workEndMinute, 1, 0);
 			else if (l % 2 == 1 && workArray[l])
 				schedule = fillDay(schedule, taskEnum.YOGA, l, workEndHour, workEndMinute, 0, 1);
+			//add free time after exercise
+			var exoEnd = workEndHour * 2 + workEndMinute + (l % 2 == 0? 2: 1);
+			var freeTimeLength = dinnerHour * 2 + dinnerMin - exoEnd;
+			schedule = fillDay(schedule, taskEnum.FREE_TIME, l, Math.floor(exoEnd / 2), exoEnd % 2, Math.floor(freeTimeLength / 2), freeTimeLength % 2);
 
 			var  timeUntilWork = workStartHour * 2 + workStartMin - (wakeHour * 2 + wakeMin);
 			//add wake up time
