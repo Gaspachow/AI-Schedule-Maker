@@ -157,12 +157,12 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 			var timeUntilLunch = lunchHour * 2 + lunchMin - (workStartHour * 2 + workStartMin);
 			//check if morning break is possible
 			if (timeUntilLunch > 6)
-				schedule = fillDay(schedule, taskEnum.BREAK, l, workStartMin + Math.floor(timeUntilLunch / 2), 0, 0, 1);
+				schedule = fillDay(schedule, taskEnum.BREAK, l, workStartHour + Math.floor(timeUntilLunch / 4), 0, 0, 1);
 			//check if afternoon break is possible
 			if (workEndHour >= 16)
 			{
 				let time = workEndHour * 2 + workEndMinute - (lunchHour * 2 + lunchMin + 2);
-				schedule = fillDay(schedule, taskEnum.BREAK, l, lunchHour * 2 + lunchMin + 2 + Math.floor(time / 4), time % 2, 0, 1);
+				schedule = fillDay(schedule, taskEnum.BREAK, l, Math.floor((lunchHour * 2 + lunchMin + 2 + time / 2) / 2), time % 2, 0, 1);
 			}
 			//Add exercice every other day and yoga the rest of days
 			if (l % 2 == 0 && workArray[l])
