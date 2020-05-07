@@ -1,6 +1,7 @@
 document.getElementById("next-button").addEventListener("click", lastStep);
 document.getElementById("overlay").addEventListener("click", overlay);
 
+var prevTask
 
 function overlay(evt) {
     var type = evt.currentTarget.classList[0];
@@ -9,8 +10,11 @@ function overlay(evt) {
     if (type == "minutes")
     {
         document.getElementById("over-text").innerHTML = taskMessage[task];
+        document.getElementById("over-text").classList.remove(prevTask);
+        document.getElementById("over-text").classList.add(evt.currentTarget.classList[1]);
         document.getElementById("overlay").style.display = "block";
         console.log(evt.currentTarget.classList);
+        prevTask = evt.currentTarget.classList[1];
     }
     else
     {
