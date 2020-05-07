@@ -1,11 +1,22 @@
 document.getElementById("next-button").addEventListener("click", nextStep1);
 document.getElementById("overlay").addEventListener("click", overlay);
+document.getElementById("start-button").addEventListener("click", displayForm);
 
 var prevTask
 
 
+function displayForm() {
+    document.getElementById("d-box").classList.add("hidden");
+    document.getElementById("start-button").classList.add("hidden");
+    setTimeout(displayForm2, 1000);
+}
 
-
+function displayForm2() {
+    // document.getElementById("d-box").style.display = "none";
+    // document.getElementById("start-button").style.display = "none";
+    document.getElementById("phone").classList.remove("hidden");
+    document.getElementById("phone").classList.add("visible");
+}
 
 function overlay(evt) {
     var type = evt.currentTarget.classList[0];
@@ -29,6 +40,14 @@ function overlay(evt) {
         console.log("hiding...");
     }
 }
+
+function wait(ms){
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
 
 function  nextStep1() {
     console.log("done");
