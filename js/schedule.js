@@ -25,6 +25,8 @@ const day = Object.freeze(
 		SUNDAY: 6
 	});
 
+var gSchedule;
+
 function fillDay(schedule, task, day, startHour, startMin, lengthHour, lengthMinute)
 {
 	var shiftBegin = 0;
@@ -67,6 +69,51 @@ function fillWeek(schedule, task, startHour, startMin, lengthHour, lengthMinute)
 		schedule = fillDay(schedule, task, i, startHour, startMin, lengthHour, lengthMinute);
 	return schedule;
 }
+// id following format: m[i].[j].[j] with i j k being numbers
+function getTaskOfDay(time)
+{
+	time = time.substr(1).split(".");
+	var day = time[0];
+	var hour = time[1];
+	var min = time[2];
+
+	var i, j;
+	var startTask = gSchedule[day][hour][min];
+	var startHour, startMin, endHour, endMinute;
+	for (i = hour; i > 0; i--)
+	{
+		for (j = min; j > 0; j--)
+		{
+			if (gSchedule[day][i][j] == startTask)
+			{
+				startHour = i;
+				startMin = j;
+			}
+			else
+			{
+				i = 0;
+				break;
+			}
+		}
+	}
+	for (i = hour; i < 24; i++)
+	{
+		for (j = min; j < 2; j++)
+		{
+			if (gSchedule[day][i][j] == startTask)
+			{
+				endHour = i;
+				endMinute = j;
+			}
+			else
+			{
+				i = 24;
+				break;
+			}
+		}
+	}
+	return [startHour, startMin, endHour, endMinute];
+}
 
 function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinute, workArray)
 {
@@ -105,6 +152,7 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 	}
 	//fill lunch hours
 	schedule = fillWeek(schedule, taskEnum.LUNCH, 12, 1, 1, 0);
+	gSchedule = schedule;
 	return schedule;
 }
 
