@@ -69,7 +69,7 @@ function fillWeek(schedule, task, startHour, startMin, lengthHour, lengthMinute)
 		schedule = fillDay(schedule, task, i, startHour, startMin, lengthHour, lengthMinute);
 	return schedule;
 }
-// id following format: m[i].[j].[j] with i j k being numbers
+// id following format: m[i].[j].[k] with i j k being numbers
 function getTaskOfDay(time)
 {
 	time = time.substr(1).split(".");
@@ -129,7 +129,7 @@ function getTaskOfDay(time)
 		endHour++;
 		endMinute = 0;
 	}
-	return [startHour, startMin, endHour, endMinute];
+	return [startHour, startMin * 30, endHour, endMinute * 30];
 }
 
 function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinute, workArray)
