@@ -6,14 +6,12 @@ var prevTask
 function overlay(evt) {
     var type = evt.currentTarget.classList[0];
     var task = evt.currentTarget.classList[1][4];
-    var workStartHour = document.getElementById("startwork-h").value;
-    var workStartMin = document.getElementById("startwork-m").value;
-    var workEndHour = document.getElementById("stopwork-h").value;
-    var workEndMin = document.getElementById("stopwork-m").value;
 
     if (type == "minutes")
     {
+        var hours = getTaskOfDay(evt.currentTarget.id);
         document.getElementById("over-text").innerHTML = taskMessage[task];
+        document.getElementById("over-hour").innerHTML = hours[0] + ':' + hours[1] + ' - ' + hours[2] + ':' + hours[3];
         document.getElementById("over-square").classList.remove(prevTask);
         document.getElementById("over-square").classList.add(evt.currentTarget.classList[1]);
         document.getElementById("overlay").style.display = "block";

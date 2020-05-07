@@ -478,17 +478,8 @@ select {
   cursor: pointer; /* Add a pointer on hover */
 }
 
-#overlay p {
-  text-align: center;
-  border-radius: 10px;
-  position: absolute;
-  width: 50%;
-  top: auto;
-  left: 50%;
-  font-size: 50px;
-  color: rgb(36, 36, 36);
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
+#over-hour {
+  font-size: 30px;
 }
 
 #over-square{
