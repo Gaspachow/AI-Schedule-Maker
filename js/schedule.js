@@ -188,6 +188,13 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, workStartHour - 1, workStartMin, 1, 0);
 			}
 		}
+		else
+		{
+			var timeToEat = lunchHour * 2 + lunchMin - 9 * 2;
+			schedule = fillDay(schedule, taskEnum.FREE_TIME, l, 9, 0, Math.floor(timeToEat / 2), timeToEat % 2);
+			timeToEat = dinnerHour * 2 + dinnerMin - (lunchHour * 2 + lunchMin + 2);
+			schedule = fillDay(schedule, taskEnum.FREE_TIME, l, lunchHour + 1, lunchMin, Math.floor(timeToEat / 2), timeToEat % 2);
+		}
 		//fill evending time
 		var timeLeft = 24 * 2 - (dinnerHour * 2 + 2 + dinnerMin);
 		schedule = fillDay(schedule, taskEnum.EVENING_TIME, l, dinnerHour + 1, dinnerMin, Math.floor(timeLeft / 2), timeLeft % 2);
