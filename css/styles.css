@@ -376,6 +376,7 @@ select {
 
 .day, #weekdays p {
   width: calc(100% / 7);
+  min-width: 77px;
 }
 
 #weekdays p {
@@ -397,6 +398,7 @@ select {
 .minutes {
   box-sizing: border-box;
   width: 100%;
+  min-width: 77px;
   text-align: center;
   height: calc(1000px / 36);
 }
@@ -423,6 +425,7 @@ select {
   display: flex;
   border-radius: 5px;
   width: 100%;
+  min-width: 550px;
   border: 1px solid rgb(77, 77, 77);
 }
 #weekdays {
@@ -459,4 +462,30 @@ select {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom: 1px solid white;
+}
+
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+#over-text{
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: rgb(36, 36, 36);
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
 }
