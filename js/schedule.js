@@ -73,16 +73,21 @@ function fillWeek(schedule, task, startHour, startMin, lengthHour, lengthMinute)
 function getTaskOfDay(time)
 {
 	time = time.substr(1).split(".");
-	var day = time[0];
-	var hour = time[1];
-	var min = time[2];
+	var day = parseInt(time[0]);
+	var hour = parseInt(time[1]);
+	var min = parseInt(time[2]);
 
 	var i, j;
 	var startTask = gSchedule[day][hour][min];
 	var startHour, startMin, endHour, endMinute;
-	for (i = hour; i > 0; i--)
+	var shift = 0;
+	startHour = hour;
+	startMin = min;
+	if (min == 0)
+		shift = 1;
+	for (i = hour - shift; i >= 0; i--)
 	{
-		for (j = min; j > 0; j--)
+		for (j = 1; j >= 0; j--)
 		{
 			if (gSchedule[day][i][j] == startTask)
 			{
@@ -96,9 +101,14 @@ function getTaskOfDay(time)
 			}
 		}
 	}
-	for (i = hour; i < 24; i++)
+	endHour = hour;
+	endMin = min;
+	shift = 0;
+	if (min == 1)
+		shift = 1;
+	for (i = hour + shift; i < 24; i++)
 	{
-		for (j = min; j < 2; j++)
+		for (j = 0; j < 2; j++)
 		{
 			if (gSchedule[day][i][j] == startTask)
 			{
@@ -111,6 +121,13 @@ function getTaskOfDay(time)
 				break;
 			}
 		}
+	}
+	if (endMinute == 0)
+		endMinute++;
+	else
+	{
+		endHour++;
+		endMinute = 0;
 	}
 	return [startHour, startMin, endHour, endMinute];
 }
@@ -134,21 +151,23 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 	for (var l = 0 ; l < workArray.length; l++)
 	{
 		if (workArray[l])
-			schedule = fillDay(schedule, taskEnum.WORK, l, workStartHour, workStartMin, workEndHour - workStartHour, workEndMinute - workStartMin);
-		//check if morning break is possible
-		if (12 * 2 + 1 - (workStartHour * 2 + workStartMin) > 12)
-			schedule = fillDay(schedule, taskEnum.BREAK, l, 10, 1, 0, 1);
-		//check if afternoon break is possible
-		if (workEndHour >= 16)
 		{
-			let time = workEndHour * 2 + workEndMinute - (13 * 2 + 1);
-			schedule = fillDay(schedule, taskEnum.BREAK, l, 13 + Math.floor(time / 4), time % 2, 0, 1);
+			schedule = fillDay(schedule, taskEnum.WORK, l, workStartHour, workStartMin, workEndHour - workStartHour, workEndMinute - workStartMin);
+			//check if morning break is possible
+			if (12 * 2 + 1 - (workStartHour * 2 + workStartMin) > 6)
+				schedule = fillDay(schedule, taskEnum.BREAK, l, 10, 1, 0, 1);
+			//check if afternoon break is possible
+			if (workEndHour >= 16)
+			{
+				let time = workEndHour * 2 + workEndMinute - (13 * 2 + 1);
+				schedule = fillDay(schedule, taskEnum.BREAK, l, 13 + Math.floor(time / 4), time % 2, 0, 1);
+			}
+			//Add exercice every other day and yoga the rest of days
+			if (l % 2 == 0 && workArray[l])
+				schedule = fillDay(schedule, taskEnum.EXERCISE, l, workEndHour, workEndMinute, 1, 0);
+			else if (l % 2 == 1 && workArray[l])
+				schedule = fillDay(schedule, taskEnum.YOGA, l, workEndHour, workEndMinute, 0, 1);
 		}
-		//Add exercice every other day and yoga the rest of days
-		if (l % 2 == 0 && workArray[l])
-			schedule = fillDay(schedule, taskEnum.EXERCISE, l, workEndHour, workEndMinute, 1, 0);
-		else if (l % 2 == 1 && workArray[l])
-			schedule = fillDay(schedule, taskEnum.YOGA, l, workEndHour, workEndMinute, 0, 1);
 	}
 	//fill lunch hours
 	schedule = fillWeek(schedule, taskEnum.LUNCH, 12, 1, 1, 0);
@@ -157,3 +176,4 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 }
 
 //var s = generateSchedule(9, 0, 17, 0, [true, true, true, true, true, false, false]);
+//var t = getTaskOfDay("m0.10.0")
