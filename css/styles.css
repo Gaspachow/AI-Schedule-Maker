@@ -459,11 +459,15 @@ select {
 }
 
 .task0 {
-  background-color: lightseagreen;
+  background-color: rgb(126, 190, 187);
 }
 
-.task11 {
-  background-color: grey;
+.task7 {
+  background-color: plum;
+}
+
+.task1 {
+  background-color: white;
 }
 
 .task2 {
@@ -512,6 +516,10 @@ select {
   font-size: 30px;
 }
 
+#over-text, #over-text p {
+  margin: 20px 0px;
+}
+
 #hourCol, p#emptyDay {
   width: 5%;
   text-align: right;
@@ -521,8 +529,23 @@ select {
   height: 908px;
 }
 
+.overlay-buttons {
+  text-align: center;
+}
+
 #over-details {
   font-size: 15px;
+}
+
+#over-details p {
+  margin: 10px 0px;
+  height: 0px;
+  text-align: center;
+  padding: 4px 0px;
+  font-family: 'Varela Round', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(36, 36, 36);
 }
 
 #over-square{
@@ -532,6 +555,7 @@ select {
   position: absolute;
   width: 50%;
   height: 40%;
+  min-height: 336px;
   top: 50%;
   left: 50%;
   font-size: 50px;

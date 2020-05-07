@@ -3,6 +3,10 @@ document.getElementById("overlay").addEventListener("click", overlay);
 
 var prevTask
 
+
+
+
+
 function overlay(evt) {
     var type = evt.currentTarget.classList[0];
     var task = evt.currentTarget.classList[1][4];
@@ -12,6 +16,7 @@ function overlay(evt) {
         var hours = getTaskOfDay(evt.currentTarget.id);
         document.getElementById("over-text").innerHTML = taskMessage[task];
         document.getElementById("over-hour").innerHTML = hours[0] + ':' + hours[1] + '0' + ' - ' + hours[2] + ':' + hours[3] + '0';
+        document.getElementById("over-details").innerHTML = overDetails[task]
         document.getElementById("over-square").classList.remove(prevTask);
         document.getElementById("over-square").classList.add(evt.currentTarget.classList[1]);
         document.getElementById("overlay").style.display = "block";
@@ -98,11 +103,24 @@ var taskMessage = ['<p>wake-up</p>',
                    '<p>breakfast</p>',
                    '<p>Lunch</p>',
                    '<p>Dinner</p>',
-                   '<p>Leisure</p>',
+                   '<p>FreeTime</p>',
                    '<p>Exercise</p>',
                    '<p>Yoga</p>',
                    '<p>Crea Time</p>',
                    '<p>Free Time</p>'];
+
+var overDetails = [`<p>Time for a new day! Shower, breakfast. <br > Why not listen a take a listen to this podcast?</p><div class="overlay-buttons"><form action="https://www.bbc.co.uk/podcasts" target="_blank" style="display: inline-block"><input class="button" type="submit" value="LISTEN NOW"/></form></div>`,
+                    `<p>A day well spent.<br> Try some calmer activities and go to bed whenever you feel ready.</p><div class="overlay-buttons"><form action="https://www.nhs.uk/live-well/sleep-and-tiredness/10-tips-to-beat-insomnia/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="TROUBLE SLEEPING?"/></form></div>`,
+                    `<p>Try to set up yourself in a specific area only for work. <br >How about some piano instrumental?</p><div class="overlay-buttons"><form action="https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO" target="_blank" style="display: inline-block"><input class="button" type="submit" value="LISTEN NOW"/></form></div>`,
+                    '<p>Time to breath.<br >Spend some time away from your work environment</p>',
+                    '<p>breakfast</p>',
+                    `<p>Wether you'd like to order or looking <br />for some inspiration to cook, we have you covered!</p><div class="overlay-buttons"><form action="https://www.ubereats.com/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="ORDER"/></form><form action="https://www.marmiton.org/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="COOK"/></form></div>`,
+                    `<p>Wether you'd like to order or looking <br />for some inspiration to cook, we have you covered!</p><div class="overlay-buttons"><form action="https://www.ubereats.com/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="ORDER"/></form><form action="https://www.marmiton.org/" target="_blank" style="display: inline-block"><input class="button" type="submit" value="COOK"/></form></div>`,
+                    `<p>This is your time! Do anything you enjoy.<br > Watch a series, play games, ...</p> <div class="overlay-buttons"><form action="https://worldoftanks.eu/" target="_blank" style="display: inline-block">    <input class="button" type="submit" value="LET'S PLAY!"/></form></div>`,
+                    `<p>A sane body leads to a sane mind.<br>Time to maintain your body physically!</p><div class="overlay-buttons"><form action="https://fiit.tv/" target="_blank" style="display: inline-block"> <input class="button" type="submit" value='GET "FIIT"'/></form></div>`,
+                    `<p>Get fitter and healthier <br >with the most popular exercise in the world.</p><div class="overlay-buttons"><form action="https://www.dailyyoga.com/" target="_blank" style="display: inline-block">    <input class="button" type="submit" value='GET ZEN'/></form></div>`,
+                    '<p>Crea Time</p>',
+                    `<p>This is your time! Do anything you enjoy.<br > Watch a series, play games, ...</p> <div class="overlay-buttons"><form action="https://worldoftanks.eu/" target="_blank" style="display: inline-block">    <input class="button" type="submit" value="LET'S PLAY!"/></form></div>`];
 
 
 function makeCalendar() {
