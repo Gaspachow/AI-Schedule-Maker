@@ -176,12 +176,12 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 			var  timeToWork = workStartHour * 2 + workStartMin;
 
 			//add wake up time
-			if (timeToWork > 9 * 2)
+			if (timeToWork > 10 * 2)
 			{
-				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, 8, 0, 1, 0);
-				var timeUntilWork = workStartHour * 2 + workStartMin - 9 * 2;
+				schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, 9, 0, 1, 0);
+				var timeUntilWork = workStartHour * 2 + workStartMin - 10 * 2;
 				if (timeUntilWork > 0)
-					schedule = fillDay(schedule, taskEnum.FREE_TIME, l, 9, 0, Math.floor(timeUntilWork / 2), timeUntilWork % 2);
+					schedule = fillDay(schedule, taskEnum.FREE_TIME, l, 10, 0, Math.floor(timeUntilWork / 2), timeUntilWork % 2);
 			}
 			else
 			{
@@ -190,8 +190,9 @@ function generateSchedule(workStartHour, workStartMin, workEndHour, workEndMinut
 		}
 		else
 		{
-			var timeToEat = lunchHour * 2 + lunchMin - 9 * 2;
-			schedule = fillDay(schedule, taskEnum.FREE_TIME, l, 9, 0, Math.floor(timeToEat / 2), timeToEat % 2);
+			schedule = fillDay(schedule, taskEnum.WAKEUP_TIME, l, 9, 0, 1, 0);
+			var timeToEat = lunchHour * 2 + lunchMin - 10 * 2;
+			schedule = fillDay(schedule, taskEnum.FREE_TIME, l, 10, 0, Math.floor(timeToEat / 2), timeToEat % 2);
 			timeToEat = dinnerHour * 2 + dinnerMin - (lunchHour * 2 + lunchMin + 2);
 			schedule = fillDay(schedule, taskEnum.FREE_TIME, l, lunchHour + 1, lunchMin, Math.floor(timeToEat / 2), timeToEat % 2);
 		}
